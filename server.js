@@ -24,4 +24,6 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
   console.log(`📄 Swagger docs at http://localhost:${PORT}/api-docs`);
   console.log(`📄 Contacts at http://localhost:${PORT}/contact`);
-});;
+});
+
+module.exports = app;
