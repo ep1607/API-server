@@ -1,3 +1,4 @@
+# NOTES:
 
 - Express is js framework that helps us run the backend of API-server
 
@@ -8,3 +9,13 @@
 - touch: creates a file
 
 - jest-openapi is library that validates requests/responses against your OpenAPI spec.
+
+
+
+# TODO:
+
+- [ ] implement delte page
+- [ ] implement Adding new pages by usin random quote API https://api.api-ninjas.com/v1/quotes
+- [ ] implement Updating new pages by using random quote API https://api.api-ninjas.com/v1/quotes
+- [ ] implement contract testing
+- [ ] implement contact page
