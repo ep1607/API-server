@@ -8,7 +8,10 @@
 
 - touch: creates a file
 
-- jest-openapi is library that validates requests/responses against your OpenAPI spec.
+- jest-openapi is library that validates requests/responses against your OpenAPI spec:
+    - jest → test runner
+    - supertest → makes HTTP calls to your Express server
+    - jest-openapi → validates responses against your Swagger/OpenAPI spec
 
 
 
