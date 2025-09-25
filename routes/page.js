@@ -50,6 +50,15 @@ router.get("/pages/:id", (req, res) => {
   const page = pages.find(p => p.id === parseInt(req.params.id));
   if (!page) return res.status(404).json({ error: "Page not found" });
   if (req.headers.accept && req.headers.accept.includes("application/json")) return res.json(page);
+    // If client wants JSON (API request)
+  if (req.accepts("json")) {
+    return res.json({
+      id: page.id,
+      title: page.title,
+      content: page.content
+    });
+  }
+  
   res.sendFile(path.join(__dirname, "../public/page.html"));
   
 });
@@ -70,4 +79,4 @@ router.delete("/pages/:id", (req, res) => {
   res.json(deleted[0]);
 });
 
-module.exports = router;
+module.exports = { router , pages };

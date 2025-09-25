@@ -34,6 +34,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Page'
+        '404':
+          description: Pages not found
     post:
       summary: Create a new page
       requestBody:
@@ -49,6 +51,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Page'
+        '400': 
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Title and content are required
   /pages/{id}:
     get:
       summary: Get a page by ID
@@ -67,6 +79,17 @@ paths:
                 $ref: '#/components/schemas/Page'
         '404':
           description: Page not found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - error
+                properties:
+                  error:
+                    type: string
+                    example: "Page not found"
+          
     put:
       summary: Update a page by ID
       parameters:
@@ -90,6 +113,16 @@ paths:
                 $ref: '#/components/schemas/Page'
         '404':
           description: Page not found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - error
+                properties:
+                  error:
+                    type: string
+                    example: "Page not found"
     delete:
       summary: Delete a page by ID
       parameters:
@@ -107,6 +140,65 @@ paths:
                 $ref: '#/components/schemas/Page'
         '404':
           description: Page not found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - error
+                properties:
+                  error:
+                    type: string
+                    example: "Page not found"
+  /contact:
+    get:
+      summary: Contact us endpoint
+      responses:
+        '200':
+          description: Contact message
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Contact us at email@example.com
+        '404':
+          description: Page not found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - error
+                properties:
+                  error:
+                    type: string
+                    example: "Page not found"
+
+# Catch-all undefined routes
+  /{undefined_route}:
+    get:
+      summary: Handle undefined routes
+      parameters:
+        - name: undefined_route
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '404':
+          description: Route not found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - error
+                  - path
+                properties:
+                  error:
+                    type: string
+                    example: "Not found"
+
 components:
   schemas:
     Page:
